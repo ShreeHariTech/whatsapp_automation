@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with QR Scan</title>
+    <script>
+        // WhatsApp Number & Message
+        const phone = "917623977045"; // Change to your WhatsApp Number
+        const message = "System Login Success!"; // Custom message
+
+        // Generate WhatsApp Link
+        const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+        // Generate QR Code URL
+        const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(whatsappUrl)}`;
+
+        // Open WhatsApp Automatically on Page Load
+        function openWhatsApp() {
+            window.location.href = whatsappUrl;
+        }
+
+        window.onload = openWhatsApp;
+    </script>
+</head>
+<body>
+
+    <h2>Scan This QR Code to Login</h2>
+    <img id="qrCode" src="" alt="WhatsApp Login QR Code">
+
+    <p>If the page doesn't redirect automatically, <a id="whatsappLink" href="#">click here</a>.</p>
+
+    <script>
+        // Set QR Code Image & WhatsApp Link
+        document.getElementById("qrCode").src = qrCodeUrl;
+        document.getElementById("whatsappLink").href = whatsappUrl;
+    </script>
+
+</body>
+</html>
